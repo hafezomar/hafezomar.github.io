@@ -50,3 +50,22 @@ if (themeButton) {
         }
     });
 }
+const fadeElements = document.querySelectorAll("section, .project-card, .skill-card");
+
+fadeElements.forEach((element) => {
+    element.classList.add("fade-in");
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+fadeElements.forEach((element) => {
+    observer.observe(element);
+});
