@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Omar Hafez CV, Data Science, Portfolio">
-    <meta name="author" content="Omar HAFEZ">
+    <meta name="keywords" content="Omar Hafez portfolio, Data Science, Python, SQL, EDA">
+    <meta name="author" content="Omar Hafez">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar Hafez CV</title>
+    <title>Omar Hafez | Data Science Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -17,8 +17,9 @@
                 <h1 class="title">Omar HAFEZ</h1>
                 <h2 class="title">Data Science Student</h2>
                 <p>
-                    First-year Data Science student at Université Saint-Joseph with a 4.0 GPA,
-                    focused on Python, statistics, data analysis, and practical projects.
+                    I enjoy turning messy datasets into clear questions, useful visualizations,
+                    and honest conclusions. I'm currently strengthening my SQL and analytical
+                    workflow while building projects with Python.
                 </p>
 
                 <button id="theme-toggle">Dark Mode</button>
@@ -31,11 +32,10 @@
     <nav>
         <div id="menu">
             <ul>
-                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Me</a></li>
-                <li><a href="#edu">Education</a></li>
-                <li><a href="#skills">Technical Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#edu">Education</a></li>
                 <li><a href="#ach">Achievements</a></li>
                 <li><a href="#cv">Download CV</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -44,32 +44,129 @@
     </nav>
 
     <main>
-        <section id="home">
-            <h2>Home</h2>
-            <p>
-                Welcome to my personal portfolio website. I am a Data Science student building skills in Python,
-                data analysis, visualization, and practical projects. Here you can find my education,
-                technical skills, projects, achievements, and contact information.
-            </p>
-        </section>
-
         <section id="about">
+            <p class="section-label">WHO I AM</p>
             <h2>About Me</h2>
 
             <p>
-                I am a first-year Data Science student at Université Saint-Joseph with a 4.0 GPA,
-                currently building practical skills in Python, statistics, data analysis, and visualization.
+                I'm a Mathematics student on the Data Science track at Université
+                Saint-Joseph, currently maintaining a 4.0 GPA. My main focus is developing strong
+                foundations in Python, statistics, data analysis, visualization, and SQL.
             </p>
 
             <p>
-                I am interested in applying data science to real datasets, building projects, and improving
-                my ability to turn analysis into clear insights.
+                What interests me most is not just writing code, but understanding what a dataset
+                actually represents, asking questions it can genuinely answer, and communicating
+                the results without overstating them.
             </p>
 
             <p>
-                I am currently seeking opportunities to grow through internships, technical projects, and
-                hands-on learning experiences.
+                I'm building my skills through hands-on projects and independent study, with the
+                goal of becoming a capable data scientist who combines technical ability with analytical judgment.
             </p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <div class="project-card">
+                <p class="project-category">DATA ANALYTICS</p>
+
+                <h3>Video Game Sales EDA</h3>
+                <p>
+                    My first full exploratory data analysis project. I used a Kaggle dataset with
+                    around 16,600 game records to investigate sales patterns across platforms,
+                    genres, publishers, release years, and regions.
+                </p>
+
+                <ul>
+                    <li>Inspected and cleaned a real-world dataset with missing and inconsistent values.</li>
+                    <li>Avoided misleading year imputation and documented important dataset limitations.</li>
+                    <li>Built grouped summaries and visualizations to compare sales across major categories.</li>
+                    <li>Focused on accurate interpretation rather than treating the project as a collection of charts.</li>
+                </ul>
+
+                <div class="project-tools">
+                    <span class="tool-tag">Python</span>
+                    <span class="tool-tag">Pandas</span>
+                    <span class="tool-tag">NumPy</span>
+                    <span class="tool-tag">Matplotlib</span>
+                </div>
+
+                <a href="https://github.com/hafezomar/video-game-sales-eda" target="_blank" rel="noopener noreferrer" class="project-link">
+                    View Project
+                </a>
+            </div>
+
+            <div class="project-card">
+                <p class="project-category">FRONTEND DEVELOPMENT</p>
+
+                <h3>Vertex School Website</h3>
+                <p>
+                    A responsive static website for a fictional school, created as an academic group final
+                    project. I was mainly responsible for the structure, styling, and JavaScript interaction.
+                </p>
+
+                <ul>
+                    <li>Led most of the HTML, CSS, and JavaScript implementation.</li>
+                    <li>Built a multi-section layout with navigation, a gallery, contact content, and social links.</li>
+                    <li>Added responsive layout rules, hover effects, and basic form feedback.</li>
+                </ul>
+
+                <div class="project-tools">
+                    <span class="tool-tag">HTML</span>
+                    <span class="tool-tag">CSS</span>
+                    <span class="tool-tag">JavaScript</span>
+                </div>
+
+                <div class="project-availability">
+                    <span class="availability-dot"></span>
+                    Project files available upon request
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <p class="section-label">WHAT I WORK WITH</p>
+            <h2>Skills</h2>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>C++</li>
+                        <li>JavaScript</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Data Analysis & Visualization</h3>
+                    <ul>
+                        <li>Pandas</li>
+                        <li>NumPy</li>
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
+                        <li>Exploratory Data Analysis</li>
+                        <li>Data Cleaning</li>
+                        <li>Statistics</li>
+                        <li>Data Storytelling</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Tools & Databases</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>GitHub</li>
+                        <li>SQLite</li>
+                        <li>Excel</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section id="edu">
@@ -87,133 +184,25 @@
                 <li>Discrete Mathematics</li>
                 <li>Calculus I, II</li>
                 <li>Computer Programming I, II (Python)</li>
+                <li>Foundations of Data Science</li>
+                <li>Ethics for Data Science</li>
+                <li>Data Protection</li>
                 <li>Internet Programming (HTML, CSS, JavaScript)</li>
             </ul>
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-
-            <div class="skills-container">
-
-                <div class="skill-card">
-                    <h3>Programming</h3>
-                    <ul>
-                        <li>Python (Intermediate)</li>
-                        <li>HTML (Intermediate)</li>
-                        <li>CSS (Intermediate)</li>
-                        <li>SQL (Basic)</li>                        
-                        <li>JavaScript (Basic)</li>
-                        <li>C++ (Basic)</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Data Science</h3>
-                    <ul>
-                        <li>Data Cleaning (Intermediate)</li>
-                        <li>EDA (Basic–Intermediate)</li>
-                        <li>Matplotlib Visualization (Basic–Intermediate)</li>
-                        <li>Data Storytelling (Basic)</li>
-                        <li>Statistics (Basic–Intermediate)</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Python Libraries</h3>
-                    <ul>
-                        <li>Pandas (Intermediate)</li>
-                        <li>NumPy (Intermediate)</li>
-                        <li>Matplotlib (Intermediate)</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Web Development</h3>
-                    <ul>
-                        <li>Responsive Design (Basic)</li>
-                        <li>DOM Manipulation (Basic)</li>
-                        <li>Static Websites (Intermediate)</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Tools</h3>
-                    <ul>
-                        <li>GitHub (Basic)</li>
-                        <li>Spyder (Intermediate)</li>
-                        <li>VS Code (Basic)</li>
-                        <li>Excel (Basic)</li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-
-            <div class="project-card">
-                <h3>Video Game Sales EDA</h3>
-                <p>
-                    My first exploratory data analysis project using Python, Pandas, NumPy, and Matplotlib.
-                    I analyzed a Kaggle video game sales dataset with around 16,600 rows to explore sales
-                    patterns by platform, genre, publisher, release year, and region.
-                </p>
-
-                <p><strong>Tools:</strong> Python, Pandas, NumPy, Matplotlib</p>
-
-                <ul>
-                    <li>Loaded, inspected, and cleaned a real-world video game sales dataset.</li>
-                    <li>Handled missing publisher values and avoided misleading year imputation.</li>
-                    <li>Created groupby summaries to analyze platforms, genres, publishers, and regional sales.</li>
-                    <li>Built Matplotlib visualizations and wrote project conclusions and limitations.</li>
-                </ul>
-
-                <a href="https://github.com/hafezomar/video-game-sales-eda" target="_blank" class="project-link">
-                    View Project
-                </a>
-            </div>
-
-            <div class="project-card">
-                <h3>Vertex School Website</h3>
-                <p>
-                    A static frontend website for a fictional school, built as an academic group project.
-                    I was mainly responsible for the website structure, styling, and JavaScript interaction.
-                </p>
-
-                <p><strong>Tools:</strong> HTML, CSS, JavaScript</p>
-
-                <ul>
-                    <li>Led the HTML, CSS, and JavaScript implementation.</li>
-                    <li>Built a multi-section website with navigation, gallery, contact section, and social links.</li>
-                    <li>Used CSS styling, hover effects, and responsive layout rules.</li>
-                    <li>Implemented basic JavaScript interaction for form feedback.</li>
-                </ul>
-            </div>
         </section>
 
         <section id="ach">
             <h2>Achievements</h2>
 
-            <h3>Academic</h3>
             <ul>
-                <li>Maintained a 4.0 GPA for 2 semesters so far.</li>
+                <li>Maintained a 4.0 Major GPA for two semesters.</li>
                 <li>Lebanese Baccalaureate in General Sciences: 17.36/20.</li>
-            </ul>
-
-            <h3>Soft Skills</h3>
-            <ul>
-                <li>Analytical Thinking</li>
-                <li>Problem Solving</li>
-                <li>Fast Learner</li>
-                <li>Teamwork</li>
             </ul>
         </section>
 
         <section id="cv">
             <h2>Download CV</h2>
-            <p>You can download my CV below.</p>
+            <p>Download my CV for a concise overview of my education, skills, and projects.</p>
 
             <a href="assets/Omar_Hafez_CV.pdf" class="cv-button" download>
                 Download CV
@@ -221,12 +210,12 @@
         </section>
 
         <section id="contact">
+            <p class="section-label">LET'S CONNECT</p>
             <h2>Contact</h2>
 
             <p><strong>Email:</strong> <a href="mailto:omarhafezcoc@gmail.com">omarhafezcoc@gmail.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+96181170937">+961 81 170 937</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/hafezomar" target="_blank">github.com/hafezomar</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/omar-hafez-6aa859412" target="_blank">linkedin.com/in/omar-hafez</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/hafezomar" target="_blank" rel="noopener noreferrer">github.com/hafezomar</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/omar-hafez-6aa859412" target="_blank" rel="noopener noreferrer">linkedin.com/in/omar-hafez</a></p>
         </section>
     </main>
 
