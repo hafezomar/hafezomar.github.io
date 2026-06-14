@@ -1,131 +1,105 @@
-const menu = document.getElementById("menu");
-const links = document.querySelectorAll("#menu a");
-const sections = document.querySelectorAll("main section");
+document.documentElement.classList.remove("no-js");
+
+const nav = document.querySelector(".nav");
+const navToggle = document.querySelector(".nav-toggle");
+const navLinks = document.querySelectorAll(".nav-links a");
+const sections = document.querySelectorAll("main section[id]");
 const themeButton = document.getElementById("theme-toggle");
-const nameElement = document.querySelector(".header-text h1");
+const filterButtons = document.querySelectorAll(".filter-button");
+const skillPills = document.querySelectorAll(".skill-pill");
+const copyButton = document.querySelector(".copy-button");
+const heroTitle = document.getElementById("hero-title");
 
 const THEME_KEY = "omar-portfolio-theme";
 
-function updateThemeButton() {
-    if (!themeButton) return;
+function typeHeroName() {
+    if (!heroTitle) return;
 
-    const isDarkMode = document.body.classList.contains("dark-mode");
+    const fullName = heroTitle.textContent.trim();
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    themeButton.textContent = isDarkMode ? "Light Mode" : "Dark Mode";
-    themeButton.setAttribute("aria-pressed", isDarkMode);
-}
-
-function applySavedTheme() {
-    const savedTheme = localStorage.getItem(THEME_KEY);
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    const useDarkMode =
-        savedTheme === "dark" ||
-        (savedTheme === null && prefersDark);
-
-    document.body.classList.toggle("dark-mode", useDarkMode);
-    updateThemeButton();
-}
-
-function createMobileMenuToggle() {
-    if (!menu || menu.querySelector(".menu-toggle")) return;
-
-    const button = document.createElement("button");
-
-    button.type = "button";
-    button.className = "menu-toggle";
-    button.textContent = "Menu";
-    button.setAttribute("aria-expanded", "false");
-    button.setAttribute("aria-label", "Toggle navigation menu");
-
-    button.addEventListener("click", () => {
-        const isOpen = menu.classList.toggle("open");
-
-        button.textContent = isOpen ? "Close Menu" : "Menu";
-        button.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    menu.prepend(button);
-}
-
-function closeMobileMenu() {
-    if (!menu) return;
-
-    menu.classList.remove("open");
-
-    const button = menu.querySelector(".menu-toggle");
-
-    if (button) {
-        button.textContent = "Menu";
-        button.setAttribute("aria-expanded", "false");
-    }
-}
-
-function typeName() {
-    if (!nameElement) return;
-
-    const fullName = "Omar HAFEZ";
-    const typingSpeed = 120;
-
-    nameElement.textContent = "";
-    nameElement.classList.add("typing-name");
-
-    let index = 0;
-
-function typeNextCharacter() {
-    if (index >= fullName.length) {
-        nameElement.classList.add("typing-complete");
+    if (prefersReducedMotion) {
+        heroTitle.textContent = fullName;
+        heroTitle.classList.add("typing-complete");
         return;
     }
 
-    nameElement.textContent += fullName[index];
-    index++;
+    heroTitle.textContent = "";
+    heroTitle.classList.add("typing-name");
 
-    setTimeout(typeNextCharacter, typingSpeed);
-}
+    let index = 0;
+    const typingSpeed = 105;
+
+    function typeNextCharacter() {
+        if (index >= fullName.length) {
+            heroTitle.classList.add("typing-complete");
+            return;
+        }
+
+        heroTitle.textContent += fullName[index];
+        index += 1;
+        window.setTimeout(typeNextCharacter, typingSpeed);
+    }
 
     typeNextCharacter();
 }
 
-links.forEach((link) => {
-    link.addEventListener("click", (event) => {
-        const targetId = link.getAttribute("href");
+function setTheme(isDark) {
+    document.body.classList.toggle("dark-mode", isDark);
+    localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
 
-        if (!targetId || !targetId.startsWith("#")) return;
+    if (themeButton) {
+        themeButton.setAttribute("aria-pressed", String(isDark));
+        themeButton.querySelector("span:last-child").textContent = isDark ? "Light" : "Dark";
+    }
+}
 
-        const targetSection = document.querySelector(targetId);
+function loadTheme() {
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(savedTheme ? savedTheme === "dark" : prefersDark);
+}
 
-        if (!targetSection) return;
+function closeNav() {
+    if (!nav || !navToggle) return;
 
-        event.preventDefault();
+    nav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+}
 
-        targetSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-        closeMobileMenu();
+if (navToggle && nav) {
+    navToggle.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
     });
+}
+
+navLinks.forEach((link) => {
+    link.addEventListener("click", () => closeNav());
 });
 
+if (themeButton) {
+    themeButton.addEventListener("click", () => {
+        setTheme(!document.body.classList.contains("dark-mode"));
+    });
+}
+
 if ("IntersectionObserver" in window) {
-    const navigationObserver = new IntersectionObserver(
+    const navObserver = new IntersectionObserver(
         (entries) => {
             const visibleSections = entries
                 .filter((entry) => entry.isIntersecting)
                 .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
-            if (visibleSections.length === 0) return;
+            if (!visibleSections.length) return;
 
-            const currentSectionId = visibleSections[0].target.id;
+            const currentId = visibleSections[0].target.id;
 
-            links.forEach((link) => {
-                const isActive =
-                    link.getAttribute("href") === `#${currentSectionId}`;
+            navLinks.forEach((link) => {
+                const isCurrent = link.getAttribute("href") === `#${currentId}`;
+                link.classList.toggle("active", isCurrent);
 
-                link.classList.toggle("active", isActive);
-
-                if (isActive) {
+                if (isCurrent) {
                     link.setAttribute("aria-current", "page");
                 } else {
                     link.removeAttribute("aria-current");
@@ -133,70 +107,64 @@ if ("IntersectionObserver" in window) {
             });
         },
         {
-            rootMargin: "-20% 0px -60% 0px",
+            rootMargin: "-20% 0px -55% 0px",
             threshold: [0.1, 0.25, 0.5]
         }
     );
 
-    sections.forEach((section) => {
-        navigationObserver.observe(section);
-    });
-}
+    sections.forEach((section) => navObserver.observe(section));
 
-if (themeButton) {
-    themeButton.addEventListener("click", () => {
-        const isDarkMode = document.body.classList.toggle("dark-mode");
-
-        localStorage.setItem(
-            THEME_KEY,
-            isDarkMode ? "dark" : "light"
-        );
-
-        updateThemeButton();
-    });
-}
-
-const fadeElements = document.querySelectorAll("main > section");
-
-const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-).matches;
-
-if (!prefersReducedMotion && "IntersectionObserver" in window) {
-    fadeElements.forEach((element) => {
-        element.classList.add("fade-in");
-    });
-
-    const fadeObserver = new IntersectionObserver(
+    const revealObserver = new IntersectionObserver(
         (entries, observer) => {
             entries.forEach((entry) => {
                 if (!entry.isIntersecting) return;
-
                 entry.target.classList.add("show");
                 observer.unobserve(entry.target);
             });
         },
-        {
-            threshold: 0.12
-        }
+        { threshold: 0.12 }
     );
 
-    fadeElements.forEach((element) => {
-        fadeObserver.observe(element);
-    });
+    document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 } else {
-    fadeElements.forEach((element) => {
-        element.classList.add("show");
+    document.querySelectorAll(".reveal").forEach((element) => element.classList.add("show"));
+}
+
+filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+
+        skillPills.forEach((pill) => {
+            const types = pill.dataset.type.split(" ");
+            const show = filter === "all" || types.includes(filter);
+
+            pill.classList.toggle("is-muted", filter !== "all" && !show);
+            pill.classList.toggle("is-highlighted", filter !== "all" && show);
+        });
+    });
+});
+
+if (copyButton) {
+    copyButton.addEventListener("click", async () => {
+        const email = copyButton.dataset.copy;
+        const originalText = copyButton.textContent;
+
+        try {
+            await navigator.clipboard.writeText(email);
+            copyButton.textContent = "Copied";
+            copyButton.classList.add("copied");
+        } catch {
+            copyButton.textContent = email;
+        }
+
+        window.setTimeout(() => {
+            copyButton.textContent = originalText;
+            copyButton.classList.remove("copied");
+        }, 1800);
     });
 }
 
-applySavedTheme();
-createMobileMenuToggle();
-
-if (prefersReducedMotion) {
-    if (nameElement) {
-        nameElement.textContent = "Omar HAFEZ";
-    }
-} else {
-    typeName();
-}
+loadTheme();
+typeHeroName();
