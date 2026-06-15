@@ -1088,3 +1088,147 @@ main:focus {
         transform: none;
     }
 }
+
+/* Mobile / zoom stability fixes
+   Keeps portrait layouts visually consistent and prevents tiny overflow from
+   creating uneven filled areas when the page is zoomed out on phones. */
+html {
+    width: 100%;
+    min-width: 320px;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    position: relative;
+    min-width: 320px;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow-x: hidden;
+    background-color: var(--background);
+}
+
+body::before {
+    z-index: 0;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-copy,
+.terminal-card,
+.content-card,
+.work-item,
+.work-meta,
+.work-body,
+.section-header,
+.section-header-wide,
+.stack-grid,
+.nav,
+.nav-panel {
+    min-width: 0;
+}
+
+pre,
+code {
+    max-width: 100%;
+}
+
+@media (max-width: 900px) {
+    .nav {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .brand {
+        flex: 1 1 auto;
+    }
+
+    .nav-toggle {
+        flex: 0 0 44px;
+    }
+}
+
+@media (max-width: 560px) {
+    :root {
+        --mobile-gutter: clamp(12px, 4vw, 18px);
+    }
+
+    .site-header,
+    main,
+    .footer {
+        width: 100%;
+        max-width: var(--max-width);
+        padding-left: max(var(--mobile-gutter), env(safe-area-inset-left));
+        padding-right: max(var(--mobile-gutter), env(safe-area-inset-right));
+    }
+
+    .site-header {
+        padding-top: 18px;
+        padding-bottom: 46px;
+    }
+
+    main > .section {
+        margin: 0 0 1rem;
+        padding: 1.35rem;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--surface);
+        background: color-mix(in srgb, var(--surface) 76%, transparent);
+        box-shadow: var(--shadow-soft);
+    }
+
+    main > .section:first-child {
+        border-top: 1px solid var(--border);
+    }
+
+    .section-header,
+    .section-header-wide {
+        padding-inline: 0;
+    }
+
+    .intro-grid,
+    .edu-grid,
+    .contact-grid,
+    .work-list {
+        gap: 1rem;
+    }
+
+    .content-card,
+    .work-item,
+    .stack-grid {
+        box-shadow: none;
+    }
+
+    .terminal-card pre,
+    .code-card pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.45rem, 14.5vw, 4.1rem);
+        overflow-wrap: anywhere;
+    }
+
+    .brand-text {
+        max-width: min(190px, calc(100vw - 118px));
+    }
+
+    .hero-actions .btn,
+    .contact-card a,
+    .contact-card button {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
