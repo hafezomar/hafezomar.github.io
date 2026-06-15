@@ -3,24 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portfolio of Omar Hafez, a Mathematics and Data Science student focused on Python, SQL, exploratory data analysis, visualization, and clear analytical communication.">
+    <meta name="description" content="Portfolio of Omar Hafez, a Mathematics and Data Science student focused on Python, SQL-backed business analysis, exploratory data analysis, and visualization.">
     <meta name="author" content="Omar Hafez">
     <meta name="keywords" content="Omar Hafez, Data Science, Python, SQL, Pandas, EDA, Portfolio">
     <meta name="theme-color" content="#f7f4ea">
 
     <meta property="og:title" content="Omar Hafez | Data Science Portfolio">
-    <meta property="og:description" content="Mathematics and Data Science student portfolio featuring Python, SQL, EDA, visualization, and analytical projects.">
+    <meta property="og:description" content="Mathematics and Data Science student portfolio featuring Python, SQL, EDA, visualization, and business analysis projects.">
     <meta property="og:type" content="website">
 	<meta property="og:image" content="https://hafezomar.github.io/assets/portfolio-preview.png">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Omar Hafez | Data Science Portfolio">
-	<meta name="twitter:description" content="Mathematics and Data Science student portfolio featuring Python, SQL, EDA, visualization, and analytical projects.">
+	<meta name="twitter:description" content="Mathematics and Data Science student portfolio featuring Python, SQL, EDA, visualization, and business analysis projects.">
 	<meta name="twitter:image" content="https://hafezomar.github.io/assets/portfolio-preview.png">
 
     <title>Omar Hafez | Data Science Portfolio</title>
-
+	
+	<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+	
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -63,11 +66,11 @@
 					Lebanon · Building useful projects
 				</p>
                 <p class="eyebrow">Mathematics // Data Science // Python // SQL</p>
-                <h1 id="hero-title" class="typing-name">Omar HAFEZ</h1>
+                <h1 id="hero-title" class="typing-name">Omar Hafez</h1>
                 <p class="hero-role">Mathematics &amp; Data Science Student</p>
                 <p class="hero-text">
                     I turn messy datasets into clear questions, structured analysis, and useful visualizations.
-                    I'm currently strengthening my SQL + Python workflow and building data analysis projects.
+                    My current work focuses on SQL-backed business analysis, careful joins, and communicating insights clearly.
                 </p>
 
                 <div class="hero-actions" aria-label="Primary actions">
@@ -92,18 +95,18 @@
                 <div class="mini-grid" aria-label="Current focus areas">
                     <div>
                         <span>Current</span>
-                        <strong>SQL + EDA</strong>
+                        <strong>SQL + Python</strong>
                     </div>
                     <div>
                         <span>Practice</span>
-                        <strong>Validation</strong>
+                        <strong>Business analysis</strong>
                     </div>
                 </div>
             </aside>
         </section>
     </header>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
         <section class="section intro-section" id="about" aria-labelledby="about-title">
             <div class="section-kicker reveal">About</div>
             <div class="intro-grid">
@@ -116,7 +119,7 @@
                     <div>
                         <p>
                             I’m a Mathematics student on the Data Science track at Université Saint-Joseph, currently maintaining a 4.0 GPA.
-                            My main focus is developing strong foundations in Python, statistics, data analysis, visualization, SQL and machine learning foundations.
+                            My main focus is developing strong foundations in Python, SQL, statistics, data analysis, visualization, and machine learning foundations.
                         </p>
                         <p>
                             What interests me most is not just writing code, but understanding what a dataset represents, asking questions
@@ -132,11 +135,58 @@
             <div class="section-header section-header-wide reveal">
                 <h2 id="work-title">Projects</h2>
                 <p>
-                    A focused project set showing my current progression: exploratory analysis, SQL-assisted analysis, and frontend implementation.
+                    A focused project set showing my progression from exploratory analysis to SQL-backed, multi-table business analysis.
                 </p>
             </div>
 
             <div class="work-list">
+                <article class="work-item reveal">
+                    <div class="work-meta">
+                        <p class="project-label">SQL + Python analysis</p>
+                        <h3>Brazilian E-Commerce Business Analysis</h3>
+                        <div class="tag-row" aria-label="Tools used">
+                            <span>SQL</span>
+                            <span>SQLite</span>
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Seaborn</span>
+							<span>Jupyter</span>
+                        </div>
+                        <a class="project-thumbnail" href="https://github.com/hafezomar/brazilian-ecommerce-analysis" target="_blank" rel="noopener noreferrer" aria-label="Open Brazilian E-Commerce Business Analysis repository">
+                            <img src="assets/brazilian-ecommerce-scatterplot.png" alt="Category performance scatterplot from the Brazilian e-commerce analysis project" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="work-body">
+                        <p>
+                            A multi-table business analysis project using the Olist Brazilian E-Commerce dataset to study orders,
+                            delivery reliability, customer reviews, product categories, revenue, and regional performance.
+                        </p>
+                        <ul>
+                            <li>Built a SQLite workflow across related CSV tables while checking table grain, keys, duplicates, and missing values.</li>
+                            <li>Used SQL joins, grouped summaries, conditional logic, and business metrics to analyze delivery performance and customer satisfaction.</li>
+                            <li>Created visual insights for monthly order trends, late delivery rates, review scores, state-level delivery issues, and category performance.</li>
+                        </ul>
+                        <div class="code-card" aria-label="SQL project example">
+                            <div class="code-title">question.sql</div>
+                            <pre><code>SELECT review_score,
+       COUNT(*) AS total_orders,
+       ROUND(AVG(delivery_time_days), 2) AS avg_delivery_days,
+       ROUND(AVG(is_late) * 100, 2) AS late_delivery_rate
+FROM order_delivery_analysis
+GROUP BY review_score
+ORDER BY review_score;</code></pre>
+                        </div>
+                        <div class="project-links">
+						<a class="text-link" href="https://github.com/hafezomar/brazilian-ecommerce-analysis" target="_blank" rel="noopener noreferrer">
+							View repository <span aria-hidden="true">→</span>
+						</a>
+						<a class="text-link" href="https://github.com/hafezomar/brazilian-ecommerce-analysis/blob/main/notebooks/03_visualizations_and_insights.ipynb" target="_blank" rel="noopener noreferrer">
+							View notebook <span aria-hidden="true">→</span>
+						</a>
+						</div>
+                    </div>
+                </article>
+
                 <article class="work-item reveal">
                     <div class="work-meta">
                         <p class="project-label">Data analytics</p>
@@ -167,38 +217,6 @@ focus = "platform, genre, region patterns"</code></pre>
                         <a class="text-link" href="https://github.com/hafezomar/video-game-sales-eda" target="_blank" rel="noopener noreferrer">
                             View repository <span aria-hidden="true">→</span>
                         </a>
-                    </div>
-                </article>
-
-                <article class="work-item reveal">
-                    <div class="work-meta">
-                        <p class="project-label">Next build</p>
-                        <h3>Airline Passenger Satisfaction Analysis</h3>
-                        <div class="tag-row" aria-label="Planned tools">
-                            <span>SQL</span>
-                            <span>SQLite</span>
-                            <span>Pandas</span>
-                            <span>Seaborn</span>
-                        </div>
-                    </div>
-                    <div class="work-body">
-                        <p>
-                            A planned SQL + Python notebook project focused on passenger satisfaction, service ratings, delays,
-                            customer segments, and clear analytical storytelling.
-                        </p>
-                        <ul>
-                            <li>SQLite queries for grouped summaries, conditional logic, joins, and analytical comparisons.</li>
-                            <li>Python notebook for validation, visualization, and written interpretation.</li>
-                            <li>Designed to become the next featured data project once complete.</li>
-                        </ul>
-                        <div class="code-card" aria-label="SQL project example">
-                            <div class="code-title">question.sql</div>
-                            <pre><code>SELECT class,
-       AVG(arrival_delay) AS avg_delay,
-       AVG(satisfaction_score) AS avg_score
-FROM passenger_surveys
-GROUP BY class;</code></pre>
-                        </div>
                     </div>
                 </article>
 
@@ -258,6 +276,7 @@ GROUP BY class;</code></pre>
                 <span class="skill-pill" data-type="data">EDA</span>
                 <span class="skill-pill" data-type="data">Data Cleaning</span>
                 <span class="skill-pill" data-type="data">Statistics</span>
+				<span class="skill-pill" data-type="data">Business Analysis</span>
                 <span class="skill-pill" data-type="database tool">SQLite</span>
                 <span class="skill-pill" data-type="tool">Git</span>
                 <span class="skill-pill" data-type="tool">GitHub</span>
@@ -305,8 +324,8 @@ GROUP BY class;</code></pre>
         </section>
     </main>
 
-    <footer class="footer">
-        <p>© 2026 Omar Hafez. All rights reserved.</p>
-    </footer>
+	<footer class="footer">
+		<p>© 2026 Omar Hafez · <a href="#top" class="footer-top-link">Back to top ↑</a></p>
+	</footer>
 </body>
 </html>

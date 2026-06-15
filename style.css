@@ -352,6 +352,38 @@ button:focus-visible {
     text-transform: uppercase;
 }
 
+.project-thumbnail {
+    display: block;
+    overflow: hidden;
+    margin-top: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+}
+
+.project-thumbnail img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    object-position: center;
+    background: #ffffff;
+    transition: transform var(--transition), filter var(--transition);
+}
+
+.project-thumbnail:hover img {
+    transform: scale(1.03);
+    filter: saturate(1.05);
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    margin-top: 1.2rem;
+}
+
 .hero h1 {
     margin: 0;
     color: var(--text);
@@ -552,6 +584,10 @@ code {
 main {
     width: min(var(--max-width), calc(100% - 32px));
     margin: 0 auto;
+}
+
+main:focus {
+	outline: none;
 }
 
 .section {
@@ -819,6 +855,20 @@ main {
     text-align: center;
     font-family: var(--font-tech);
     font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.footer-top-link {
+    color: var(--text-faint);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.footer-top-link:hover {
+    color: var(--accent);
 }
 
 .reveal {
@@ -894,7 +944,21 @@ main {
     }
 
     .work-item {
-        gap: 1rem;
+        gap: 1.25rem;
+    }
+
+    .project-thumbnail {
+        max-width: 520px;
+    }
+
+    .project-thumbnail img {
+        aspect-ratio: 16 / 10;
+        object-fit: contain;
+        background: #ffffff;
+    }
+
+    .project-links {
+        gap: 1.2rem;
     }
 }
 
@@ -921,6 +985,12 @@ main {
         font-size: clamp(2.9rem, 16vw, 4.6rem);
     }
 
+    .hero-actions,
+    .contact-card,
+    .project-links {
+        gap: 0.65rem;
+    }
+
     .about-card {
         grid-template-columns: 1fr;
     }
@@ -941,8 +1011,34 @@ main {
         border-radius: 20px;
     }
 
+    .project-thumbnail {
+        margin-top: 1rem;
+        border-radius: 16px;
+    }
+
+    .project-thumbnail img {
+        aspect-ratio: 4 / 3;
+        object-fit: contain;
+        background: #ffffff;
+    }
+
+    .code-card {
+        margin: 1rem 0;
+        border-radius: 16px;
+    }
+
+    .code-card pre {
+        padding: 0.85rem;
+        font-size: 0.76rem;
+        line-height: 1.65;
+    }
+
     .section {
         padding: 3.3rem 0;
+    }
+
+    .footer {
+        padding-bottom: 2.4rem;
     }
 }
 
