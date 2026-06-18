@@ -1232,3 +1232,114 @@ code {
         width: 100%;
     }
 }
+
+/* Lichess project thumbnail: subtle CSS chessboard animation */
+.chess-thumbnail {
+    position: relative;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.chess-board-preview {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface-soft);
+}
+
+.chess-square {
+    min-height: 0;
+}
+
+.chess-light {
+    background: color-mix(in srgb, var(--surface) 86%, var(--accent-soft));
+}
+
+.chess-dark {
+    background: color-mix(in srgb, var(--terminal) 74%, var(--accent-strong));
+}
+
+.chess-piece {
+    position: absolute;
+    left: 37.5%;
+    top: 87.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 25%;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--terminal);
+    filter: drop-shadow(0 8px 10px rgba(17, 24, 39, 0.24));
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    line-height: 1;
+    transform: translate(-50%, -50%);
+    animation: chess-knight-tour 7s ease-in-out infinite;
+}
+
+.chess-thumbnail:hover .chess-piece,
+.chess-thumbnail:focus-visible .chess-piece {
+    animation-duration: 4.5s;
+}
+
+.chess-thumbnail:hover .chess-board-preview,
+.chess-thumbnail:focus-visible .chess-board-preview {
+    box-shadow: inset 0 0 0 2px var(--accent-soft);
+}
+
+body.dark-mode .chess-light {
+    background: color-mix(in srgb, var(--surface-soft) 84%, var(--accent-soft));
+}
+
+body.dark-mode .chess-dark {
+    background: color-mix(in srgb, #050816 78%, var(--accent-strong));
+}
+
+body.dark-mode .chess-piece {
+    color: var(--terminal-text);
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.38));
+}
+
+@keyframes chess-knight-tour {
+    0%,
+    12% {
+        left: 37.5%;
+        top: 87.5%;
+    }
+
+    25%,
+    37% {
+        left: 87.5%;
+        top: 62.5%;
+    }
+
+    50%,
+    62% {
+        left: 62.5%;
+        top: 12.5%;
+    }
+
+    75%,
+    87% {
+        left: 12.5%;
+        top: 37.5%;
+    }
+
+    100% {
+        left: 37.5%;
+        top: 87.5%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chess-piece {
+        animation: none !important;
+    }
+}
