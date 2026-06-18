@@ -377,6 +377,132 @@ button:focus-visible {
     filter: saturate(1.05);
 }
 
+.game-thumbnail {
+    text-decoration: none;
+}
+
+.game-controller-preview {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 230px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 28% 28%, rgba(241, 196, 15, 0.14), transparent 30%),
+        linear-gradient(135deg, var(--terminal), color-mix(in srgb, var(--terminal) 86%, var(--accent) 14%));
+}
+
+.game-controller-preview::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 34px 34px;
+    opacity: 0.45;
+}
+
+.controller-svg {
+    position: relative;
+    z-index: 2;
+    width: min(82%, 285px);
+    transform: translate(-4px, -22px);
+    filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.28));
+    transition: transform var(--transition), filter var(--transition);
+}
+
+.game-thumbnail:hover .controller-svg,
+.game-thumbnail:focus-visible .controller-svg {
+    transform: translate(-4px, -25px);
+    filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.34));
+}
+
+.controller-shape {
+    fill: color-mix(in srgb, var(--surface) 92%, var(--accent) 8%);
+    stroke: color-mix(in srgb, var(--border-strong) 75%, transparent);
+    stroke-width: 1.5;
+}
+
+.controller-dark {
+    fill: var(--terminal);
+}
+
+.controller-stick-base {
+    fill: color-mix(in srgb, var(--terminal) 88%, var(--surface) 12%);
+}
+
+.controller-stick-top {
+    fill: var(--terminal);
+}
+
+.controller-accent {
+    fill: var(--accent);
+}
+
+.controller-accent-alt {
+    fill: var(--accent-strong);
+    opacity: 0.9;
+}
+
+.game-bars {
+    position: absolute;
+    right: 20px;
+    bottom: 18px;
+    z-index: 1;
+    display: flex;
+    align-items: end;
+    gap: 6px;
+    height: 70px;
+    opacity: 0.5;
+}
+
+.game-bars span {
+    width: 10px;
+    height: var(--bar-height);
+    border-radius: 999px 999px 0 0;
+    background: var(--accent);
+}
+
+body.dark-mode .controller-shape {
+    fill: color-mix(in srgb, var(--terminal-text) 92%, var(--accent) 8%);
+    stroke: rgba(255, 255, 255, 0.14);
+}
+
+body.dark-mode .controller-stick-base {
+    fill: color-mix(in srgb, var(--terminal) 82%, var(--terminal-text) 18%);
+}
+
+@media (max-width: 900px) {
+    .game-controller-preview {
+        aspect-ratio: 16 / 10;
+        min-height: 210px;
+    }
+
+    .controller-svg {
+        width: min(74%, 285px);
+    }
+}
+
+@media (max-width: 560px) {
+    .game-controller-preview {
+        aspect-ratio: 4 / 3;
+        min-height: 190px;
+    }
+
+    .controller-svg {
+        width: min(86%, 250px);
+    }
+
+    .game-bars {
+        right: 18px;
+        bottom: 18px;
+        height: 58px;
+    }
+}
+
 .project-links {
     display: flex;
     flex-wrap: wrap;
