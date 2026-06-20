@@ -1594,6 +1594,10 @@ body.dark-mode .chess-piece {
     letter-spacing: -0.04em;
 }
 
+.other-project-card .tag-row {
+    margin: 1rem 0 1.35rem;
+}
+
 .etherea-card {
     order: -1;
 }
