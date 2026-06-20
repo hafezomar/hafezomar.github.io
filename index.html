@@ -238,11 +238,19 @@ ORDER BY review_score;</code></pre>
                             <li>Engineered evaluation features from messy wide columns while separating numeric engine evaluations from forced-mate notation.</li>
                             <li>Built focused visualizations showing that Bullet games are heavily shaped by time pressure, while rating gap is the clearest signal for favorite reliability.</li>
                         </ul>
-                        <div class="code-card" aria-label="Project analysis lesson">
-                            <div class="code-title">analysis_lesson.md</div>
-                            <pre><code>lesson = "feature engineering is hypothesis testing"
-strongest_signal = "rating gap"
-main_limit = "engine eval signs need validation"</code></pre>
+                        <div class="code-card" aria-label="SQL analysis example">
+                            <div class="code-title">termination_patterns.sql</div>
+                            <pre><code>WITH termination_by_category AS (
+    SELECT category,
+           COUNT(*) AS total_games,
+           SUM(CASE WHEN Termination = 'Time forfeit' THEN 1 ELSE 0 END) AS time_forfeit_games
+    FROM games
+    GROUP BY category
+)
+SELECT category,
+       ROUND(time_forfeit_games * 100.0 / total_games, 2) AS time_forfeit_rate
+FROM termination_by_category
+ORDER BY time_forfeit_rate DESC;</code></pre>
                         </div>
                         <div class="project-links">
                             <a class="text-link" href="https://github.com/hafezomar/lichess-game-analysis" target="_blank" rel="noopener noreferrer">
@@ -322,7 +330,7 @@ focus = "platform, genre, region patterns"</code></pre>
 
                 <article class="work-item reveal moved-project">
                     <div class="work-meta">
-                        <p class="project-label">Frontend development</p>
+                        <p class="project-label">Academic project</p>
                         <h3>Vertex School Website</h3>
                         <div class="tag-row" aria-label="Tools used">
                             <span>HTML</span>
@@ -357,7 +365,7 @@ focus = "platform, genre, region patterns"</code></pre>
             </div>
             <div class="other-projects-grid">
                 <article class="other-project-card reveal">
-                    <p class="project-label">Frontend development</p>
+                    <p class="project-label">Academic project</p>
                     <h3>Vertex School Website</h3>
                     <div class="tag-row" aria-label="Tools used">
                         <span>HTML</span><span>CSS</span><span>JavaScript</span>
@@ -418,7 +426,7 @@ focus = "platform, genre, region patterns"</code></pre>
                 <span class="skill-pill" data-type="tool">Git</span>
                 <span class="skill-pill" data-type="tool">GitHub</span>
                 <span class="skill-pill" data-type="tool data">Jupyter Notebook</span>
-                <span class="skill-pill" data-type="tool data">Excel</span>
+                <span class="skill-pill" data-type="tool">Excel</span>
             </div>
         </section>
 
