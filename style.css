@@ -1594,6 +1594,14 @@ body.dark-mode .chess-piece {
     letter-spacing: -0.04em;
 }
 
+.etherea-card {
+    order: -1;
+}
+
+.other-project-card .text-link {
+    margin-top: 1.2rem;
+}
+
 .other-project-card > p:not(.project-label):not(.small-note) {
     color: var(--text-muted);
 }
