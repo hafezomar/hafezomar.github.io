@@ -1595,7 +1595,7 @@ body.dark-mode .chess-piece {
 }
 
 .other-project-card .tag-row {
-    margin: 1rem 0 1.35rem;
+    margin: 1rem 0 0;
 }
 
 .etherea-card {
@@ -1617,7 +1617,7 @@ body.dark-mode .chess-piece {
 
 .etherea-preview {
     overflow: hidden;
-    margin: 2px 0 22px;
+    margin: 1.25rem 0 22px;
     border: 1px solid color-mix(in srgb, var(--accent-strong) 42%, var(--border));
     border-radius: 10px;
     background: #120f18;
