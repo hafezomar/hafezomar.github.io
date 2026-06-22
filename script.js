@@ -12,6 +12,38 @@ const heroTitle = document.getElementById("hero-title");
 
 const THEME_KEY = "omar-portfolio-theme";
 
+function readStoredTheme() {
+    try {
+        return window.localStorage.getItem(THEME_KEY);
+    } catch {
+        return null;
+    }
+}
+
+function saveStoredTheme(value) {
+    try {
+        window.localStorage.setItem(THEME_KEY, value);
+    } catch {
+        // Theme still works for the current session when storage is unavailable.
+    }
+}
+
+function getThemeLabel() {
+    return themeButton ? themeButton.querySelector(".theme-label") : null;
+}
+
+function updateThemeButton(isDark) {
+    if (!themeButton) return;
+
+    themeButton.setAttribute("aria-pressed", String(isDark));
+    themeButton.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+
+    const label = getThemeLabel();
+    if (label) {
+        label.textContent = isDark ? "Light" : "Dark";
+    }
+}
+
 function typeHeroName() {
     if (!heroTitle) return;
 
@@ -46,16 +78,12 @@ function typeHeroName() {
 
 function setTheme(isDark) {
     document.body.classList.toggle("dark-mode", isDark);
-    localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
-
-    if (themeButton) {
-        themeButton.setAttribute("aria-pressed", String(isDark));
-        themeButton.querySelector("span:last-child").textContent = isDark ? "Light" : "Dark";
-    }
+    saveStoredTheme(isDark ? "dark" : "light");
+    updateThemeButton(isDark);
 }
 
 function loadTheme() {
-    const savedTheme = localStorage.getItem(THEME_KEY);
+    const savedTheme = readStoredTheme();
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     setTheme(savedTheme ? savedTheme === "dark" : prefersDark);
 }
@@ -134,7 +162,11 @@ filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
         const filter = button.dataset.filter;
 
-        filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+        filterButtons.forEach((item) => {
+            const isActive = item === button;
+            item.classList.toggle("active", isActive);
+            item.setAttribute("aria-pressed", String(isActive));
+        });
 
         skillPills.forEach((pill) => {
             const types = pill.dataset.type.split(" ");

@@ -11,6 +11,7 @@
     <meta property="og:title" content="Omar Hafez | Data Science Portfolio">
     <meta property="og:description" content="Mathematics and Data Science student portfolio featuring Python, SQL, EDA, visualization, and business analysis projects.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hafezomar.github.io/">
 	<meta property="og:image" content="https://hafezomar.github.io/assets/portfolio-preview.png">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
@@ -21,10 +22,15 @@
 
     <title>Omar Hafez | Data Science Portfolio</title>
 	
+	<link rel="canonical" href="https://hafezomar.github.io/">
 	<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -47,14 +53,15 @@
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#work">Projects</a></li>
+                    <li><a href="#other-projects">Other Work</a></li>
                     <li><a href="#stack">Stack</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
 
-                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
                     <span aria-hidden="true">◐</span>
-                    <span>Theme</span>
+                    <span class="theme-label">Theme</span>
                 </button>
             </div>
         </nav>
@@ -392,16 +399,16 @@ focus = "platform, genre, region patterns"</code></pre>
                 <p>A compact view of my current tools and technical foundations.</p>
             </div>
 
-            <div class="filter-row reveal" role="list" aria-label="Skill filters">
-                <button class="filter-button active" type="button" data-filter="all">All</button>
-                <button class="filter-button" type="button" data-filter="language">Languages</button>
-                <button class="filter-button" type="button" data-filter="data">Data</button>
-                <button class="filter-button" type="button" data-filter="database">Databases</button>
-                <button class="filter-button" type="button" data-filter="tool">Tools</button>
-                <button class="filter-button" type="button" data-filter="web">Web</button>
+            <div class="filter-row reveal" aria-label="Skill filters">
+                <button class="filter-button active" type="button" data-filter="all" aria-pressed="true" aria-controls="skill-list">All</button>
+                <button class="filter-button" type="button" data-filter="language" aria-pressed="false" aria-controls="skill-list">Languages</button>
+                <button class="filter-button" type="button" data-filter="data" aria-pressed="false" aria-controls="skill-list">Data</button>
+                <button class="filter-button" type="button" data-filter="database" aria-pressed="false" aria-controls="skill-list">Databases</button>
+                <button class="filter-button" type="button" data-filter="tool" aria-pressed="false" aria-controls="skill-list">Tools</button>
+                <button class="filter-button" type="button" data-filter="web" aria-pressed="false" aria-controls="skill-list">Web</button>
             </div>
 
-            <div class="stack-grid reveal" aria-live="polite">
+            <div class="stack-grid reveal" id="skill-list" aria-live="polite">
                 <span class="skill-pill" data-type="language data">Python</span>
                 <span class="skill-pill" data-type="language database">SQL</span>
                 <span class="skill-pill" data-type="language">C++</span>

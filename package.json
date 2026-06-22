@@ -1,0 +1,14 @@
+{
+  "name": "omar-hafez-portfolio",
+  "version": "6.0.0",
+  "private": true,
+  "description": "Static personal portfolio for Omar Hafez.",
+  "scripts": {
+    "check": "npm run check:js",
+    "check:js": "node --check script.js",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
