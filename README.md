@@ -1,8 +1,8 @@
-# Omar Hafez Portfolio v4
+# Omar Hafez Portfolio v5
 
 Personal portfolio website built with HTML, CSS, and JavaScript.
 
-This version keeps the terminal-inspired design and personal voice of v3. The main upgrade is not a new visual identity. It is clearer project writing, stronger project hierarchy, and a sharper explanation of the thinking behind my data work.
+This version keeps the terminal-inspired design and personal voice of v4 while tightening the project experience: clearer scanning hierarchy, stronger visual evidence for each case study, and cleaner source structure.
 
 ## What Changed in v4
 
@@ -12,6 +12,12 @@ This version keeps the terminal-inspired design and personal voice of v3. The ma
 - Added an “Other Projects” section for Vertex School Website and Etherea: Blood Wing
 - Added a gameplay preview for Etherea: Blood Wing, a Python and Tkinter dark fantasy RPG prototype inspired by my Minecraft Bedrock project
 - Kept the strongest data projects front and center
+
+## V5 polish
+
+- Added compact dataset and analytical-lens callouts so project scope is easier to scan
+- Added project numbering and refined hover states to give selected work a clearer visual rhythm
+- Removed the legacy hidden Vertex card, leaving it represented once in Other Projects
 
 ## Features
 
